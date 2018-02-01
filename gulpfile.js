@@ -61,9 +61,11 @@ gulp.task('html', function() {
 });
 
 gulp.task('pug', function() {
-  return gulp.src(dirs.source + '/**/*.pug')
+  return gulp.src(dirs.source + '/*.pug')
     .pipe(plumber({ errorHandler: onError }))
-    .pipe(pug())
+    .pipe(pug({
+      pretty: true
+    }))
     .pipe(gulp.dest(dirs.build));
 });
 
@@ -235,6 +237,7 @@ gulp.task('serve', gulp.series('build', function() {
       dirs.source + '/*.html',
       dirs.source + '/_include/*.html',
       gulp.series('html', reloader)
+    ]
   );
 
   gulp.watch(
