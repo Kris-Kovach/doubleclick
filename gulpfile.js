@@ -1,44 +1,47 @@
 'use strict';
 
-var pjson = require('./package.json');
-var dirs = pjson.config.directories;
-var gulp = require('gulp');
-var less = require('gulp-less');
-var rename = require('gulp-rename');
-var sourcemaps = require('gulp-sourcemaps');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var mqpacker = require('css-mqpacker');
-var replace = require('gulp-replace');
-var fileinclude = require('gulp-file-include');
-var del = require('del');
-var browserSync = require('browser-sync').create();
-var ghPages = require('gulp-gh-pages');
-var newer = require('gulp-newer');
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var cheerio = require('gulp-cheerio');
-var svgstore = require('gulp-svgstore');
-var svgmin = require('gulp-svgmin');
-var base64 = require('gulp-base64');
-var notify = require('gulp-notify');
-var plumber = require('gulp-plumber');
-var cleanCSS = require('gulp-cleancss');
-var pug = require('gulp-pug');
-var spritesmith = require('gulp.spritesmith');
-var buffer = require('vinyl-buffer');
-var merge = require('merge-stream');
+const pjson = require('./package.json');
+const dirs = pjson.config.directories;
 
+const gulp = require('gulp');
+const less = require('gulp-less');
+const rename = require('gulp-rename');
+const sourcemaps = require('gulp-sourcemaps');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const mqpacker = require('css-mqpacker');
+const replace = require('gulp-replace');
+const fileinclude = require('gulp-file-include');
+const del = require('del');
+const browserSync = require('browser-sync').create();
+const ghPages = require('gulp-gh-pages');
+const newer = require('gulp-newer');
+const imagemin = require('gulp-imagemin');
+const imageminJpegtran = require('imagemin-jpegtran');
+const pngquant = require('imagemin-pngquant');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
+const cheerio = require('gulp-cheerio');
+const svgstore = require('gulp-svgstore');
+const svgmin = require('gulp-svgmin');
+const base64 = require('gulp-base64');
+const notify = require('gulp-notify');
+const plumber = require('gulp-plumber');
+const cleanCSS = require('gulp-cleancss');
+const pug = require('gulp-pug');
+const spritesmith = require('gulp.spritesmith');
+const buffer = require('vinyl-buffer');
+const merge = require('merge-stream');
+
+// Компиляция препроцессора
 gulp.task('less', function(){
   return gulp.src(dirs.source + '/less/style.less')
     .pipe(plumber({ errorHandler: onError }))
     .pipe(sourcemaps.init())
     .pipe(less())
     .pipe(postcss([
-        autoprefixer({ browsers: ['last 2 version'] }),
-        mqpacker({ sort: true }),
+      autoprefixer({ browsers: ['last 2 version'] }),
+      mqpacker({ sort: true }),
     ]))
     .pipe(sourcemaps.write('/'))
     .pipe(gulp.dest(dirs.build + '/css/'))
@@ -48,6 +51,7 @@ gulp.task('less', function(){
     .pipe(gulp.dest(dirs.build + '/css/'));
 });
 
+// Сборка HTML
 gulp.task('html', function() {
   return gulp.src(dirs.source + '/*.html')
     .pipe(plumber({ errorHandler: onError }))
@@ -61,45 +65,46 @@ gulp.task('html', function() {
 });
 
 gulp.task('pug', function() {
-  return gulp.src(dirs.source + '/*.pug')
+  return gulp.src(dirs.source + '/**/*.pug')
     .pipe(plumber({ errorHandler: onError }))
-    .pipe(pug({
-      pretty: true
-    }))
+    .pipe(pug())
     .pipe(gulp.dest(dirs.build));
 });
 
+// ЗАДАЧА: Копирование изображений
 gulp.task('img', function () {
   return gulp.src([
-        dirs.source + '/img/*.{gif,png,jpg,jpeg,svg}',
-      ],
-      {since: gulp.lastRun('img')}
-    )
+      dirs.source + '/img/*.{gif,png,jpg,jpeg,svg}',
+    ],
+    {since: gulp.lastRun('img')}
+  )
     .pipe(plumber({ errorHandler: onError }))
     .pipe(newer(dirs.build + '/img'))
     .pipe(gulp.dest(dirs.build + '/img'));
 });
 
+// Оптимизация изображений (ВРУЧНУЮ)
 gulp.task('img:opt', function () {
   return gulp.src([
-      dirs.source + '/img/*.{gif,png,jpg,jpeg,svg}',
-      '!' + dirs.source + '/img/sprite-svg.svg',
-    ])
+    dirs.source + '/img/*.{gif,png,jpg,jpeg,svg}',
+    '!' + dirs.source + '/img/sprite-svg.svg',
+  ])
     .pipe(plumber({ errorHandler: onError }))
-    .pipe(imagemin({
-      progressive: true,
-      svgoPlugins: [{removeViewBox: false}],
-      use: [pngquant()]
-    }))
+    .pipe(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({optimizationLevel: 7}),
+      imagemin.svgo({plugins: [{removeViewBox: false}]})
+    ]))
     .pipe(gulp.dest(dirs.source + '/img'));
 });
 
-
+// ЗАДАЧА: Сборка SVG-спрайта
 gulp.task('svgstore', function (callback) {
-  var spritePath = dirs.source + '/img/svg-sprite';
+  let spritePath = dirs.source + '/img/svg-sprite';
   if(fileExist(spritePath) !== false) {
     return gulp.src(spritePath + '/*.svg')
-      // .pipe(plumber({ errorHandler: onError }))
+    // .pipe(plumber({ errorHandler: onError }))
       .pipe(svgmin(function (file) {
         return {
           plugins: [{
@@ -122,9 +127,10 @@ gulp.task('svgstore', function (callback) {
   }
 });
 
+// Cшивка PNG-спрайта
 gulp.task('png:sprite', function () {
-  var fileName = 'sprite-' + Math.random().toString().replace(/[^0-9]/g, '') + '.png';
-  var spriteData = gulp.src('src/img/png-sprite/*.png')
+  let fileName = 'sprite-' + Math.random().toString().replace(/[^0-9]/g, '') + '.png';
+  let spriteData = gulp.src('src/img/png-sprite/*.png')
     .pipe(plumber({ errorHandler: onError }))
     .pipe(spritesmith({
       imgName: fileName,
@@ -133,15 +139,16 @@ gulp.task('png:sprite', function () {
       padding: 4,
       imgPath: '../img/' + fileName
     }));
-  var imgStream = spriteData.img
+  let imgStream = spriteData.img
     .pipe(buffer())
     .pipe(imagemin())
     .pipe(gulp.dest('build/img'));
-  var cssStream = spriteData.css
+  let cssStream = spriteData.css
     .pipe(gulp.dest(dirs.source + '/less/'));
   return merge(imgStream, cssStream);
 });
 
+// Очистка папки сборки
 gulp.task('clean', function () {
   return del([
     dirs.build + '/**/*',
@@ -149,28 +156,67 @@ gulp.task('clean', function () {
   ]);
 });
 
+// Конкатенация и углификация Javascript
 gulp.task('js', function () {
   return gulp.src([
-      dirs.source + '/js/jquery.min.js',
-      dirs.source + '/js/bootstrap.min.js',
-      dirs.source + '/js/inputmask.min.js',
-      dirs.source + '/js/ion.rangeSlider.min.js',
-      dirs.source + '/js/jquery.inputmask.js',
-      dirs.source + '/js/jquery.responsiveTabs.js',
-      dirs.source + '/js/ofi.min.js',
-      dirs.source + '/js/simple-lightbox.min.js',
-      dirs.source + '/js/slick.min.js',
-      dirs.source + '/js/jquery.fancybox.min.js'
-    ])
+    // dirs.source + '/js/jquery-3.1.0.min.js',
+    // dirs.source + '/js/jquery-migrate-1.4.1.min.js',
+    // dirs.source + '/js/jquery.validate.js',
+    // dirs.source + '/js/validate.messages.js',
+    // dirs.source + '/js/jquery.fancybox.min.js',
+    // dirs.source + '/js/url-polyfill.js',
+    // dirs.source + '/js/picturefill.min.js',
+    // dirs.source + '/js/owl.carousel.min.js',
+    // dirs.source + '/js/datepicker.min.js',
+    // dirs.source + '/js/select2.min.js',
+    // dirs.source + '/js/inputmask.js',
+    // dirs.source + '/js/jquery.inputmask.js',
+    // dirs.source + '/js/inputmask.phone.extensions.js',
+    // dirs.source + '/js/inputmask.date.extensions.js',
+    // dirs.source + '/js/phone-ru.js',
+    // dirs.source + '/js/social-likes.min.js',
+    // dirs.source + '/js/jquery.mCustomScrollbar.concat.min.js',
+    // dirs.source + '/js/svg-sprite.js',
+    // dirs.source + '/js/mail.js',
+    // dirs.source + '/js/piano.js',
+    dirs.source + '/js/script.js'
+  ])
     .pipe(plumber({ errorHandler: onError }))
     .pipe(concat('script.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest(dirs.build + '/js'));
 });
 
+//Копирование шрифтов
 
+gulp.task('fonts', function () {
+  return gulp.src([
+    dirs.source + '/fonts/*.woff',
+    dirs.source + '/fonts/*.woff2'
+  ])
+    .pipe(gulp.dest(dirs.build + '/fonts'));
+});
+
+// Копирование сэмплов
+
+gulp.task('samples', function () {
+  return gulp.src([
+    dirs.source + '/samples/*.mp3'
+  ])
+    .pipe(gulp.dest(dirs.build + '/samples'));
+});
+
+gulp.task('copy-js', function () {
+  return gulp.src([
+    dirs.source + '/js/piano.js'
+  ])
+    .pipe(gulp.dest(dirs.build + '/js'));
+});
+
+
+// Кодирование в base64 шрифта в формате WOFF
 gulp.task('css:fonts:woff', function (callback) {
-  var fontCssPath = dirs.source + '/fonts/font_opensans_woff.css';
+  let fontCssPath = dirs.source + '/fonts/font_opensans_woff.css';
   if(fileExist(fontCssPath) !== false) {
     return gulp.src(fontCssPath)
       .pipe(plumber({ errorHandler: onError }))
@@ -178,7 +224,7 @@ gulp.task('css:fonts:woff', function (callback) {
         // baseDir: '/',
         extensions: ['woff'],
         maxImageSize: 1024*1024,
-        devareAfterEncoding: false,
+        deleteAfterEncoding: false,
         // debug: true
       }))
       .pipe(gulp.dest(dirs.build + '/css'));
@@ -187,11 +233,12 @@ gulp.task('css:fonts:woff', function (callback) {
     console.log('Файла WOFF, из которого генерируется CSS с base64-кодированным шрифтом, нет');
     console.log('Отсутствующий файл: ' + fontCssPath);
     callback();
-}
+  }
 });
 
+// Кодирование в base64 шрифта в формате WOFF2
 gulp.task('css:fonts:woff2', function (callback) {
-  var fontCssPath = dirs.source + '/fonts/font_opensans_woff2.css';
+  let fontCssPath = dirs.source + '/fonts/font_opensans_woff2.css';
   if(fileExist(fontCssPath) !== false) {
     return gulp.src(fontCssPath)
       .pipe(plumber({ errorHandler: onError }))
@@ -199,7 +246,7 @@ gulp.task('css:fonts:woff2', function (callback) {
         // baseDir: '/',
         extensions: ['woff2'],
         maxImageSize: 1024*1024,
-        devareAfterEncoding: false,
+        deleteAfterEncoding: false,
         // debug: true
       }))
       .pipe(replace('application/octet-stream;', 'application/font-woff2;'))
@@ -212,18 +259,21 @@ gulp.task('css:fonts:woff2', function (callback) {
   }
 });
 
+// Сборка
 gulp.task('build', gulp.series(
   'clean',
   'svgstore',
   'png:sprite',
-  gulp.parallel('less', 'img', 'js', 'css:fonts:woff', 'css:fonts:woff2'),
+  gulp.parallel('less', 'img', 'js', 'fonts', 'samples'),
   'pug',
   'html'
 ));
 
+// Локальный сервер, слежение
 gulp.task('serve', gulp.series('build', function() {
 
   browserSync.init({
+    //server: dirs.build,
     server: {
       baseDir: "./build/"
     },
@@ -236,8 +286,8 @@ gulp.task('serve', gulp.series('build', function() {
     [
       dirs.source + '/*.html',
       dirs.source + '/_include/*.html',
-      gulp.series('html', reloader)
-    ]
+    ],
+    gulp.series('html', reloader)
   );
 
   gulp.watch(
@@ -272,22 +322,20 @@ gulp.task('serve', gulp.series('build', function() {
 
 }));
 
-gulp.task('deploy', function() {
-  return gulp.src('./build/**/*')
-    .pipe(ghPages());
-});
-
+// Задача по умолчанию
 gulp.task('default',
   gulp.series('serve')
 );
 
+// Дополнительная функция для перезагрузки в браузере
 function reloader(done) {
   browserSync.reload();
   done();
 }
 
+// Проверка существования файла/папки
 function fileExist(path) {
-  var fs = require('fs');
+  const fs = require('fs');
   try {
     fs.statSync(path);
   } catch(err) {
@@ -296,8 +344,8 @@ function fileExist(path) {
 }
 
 var onError = function(err) {
-    notify.onError({
-      title: "Error in " + err.plugin,
-    })(err);
-    this.emit('end');
+  notify.onError({
+    title: "Error in " + err.plugin,
+  })(err);
+  this.emit('end');
 };
