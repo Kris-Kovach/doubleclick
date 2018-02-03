@@ -1,0 +1,75 @@
+.banner {
+  padding-top: 130px;
+  padding-bottom: 25px;
+  background: #785f42;
+
+  @media (min-width: @screen-sm) {
+    padding-top: 150px;
+  }
+
+  @media (min-width: @screen-md) {
+    padding-top: 180px;
+    padding-bottom: 35px;
+  }
+
+  @media (min-width: @screen-lg) {
+    padding-top: 300px;
+  }
+
+  @media (min-width: @screen-xl) {
+    padding-top: 390px;
+  }
+
+  &__inner {
+    .container();
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #fff;
+    font-family: @font-family--titles;
+    font-size: 24px;
+
+    @media (min-width: @screen-sm) {
+      width: 80%;
+      margin-bottom: 35px;
+      font-size: 26px;
+    }
+
+    @media (min-width: @screen-md) {
+      margin-bottom: 45px;
+      font-size: 36px;
+    }
+
+    @media (min-width: @screen-lg) {
+      font-size: 46px;
+    }
+
+    @media (min-width: @screen-xl) {
+      font-size: 60px;
+    }
+  }
+
+  &__link {
+    display: block;
+    text-align: right;
+  }
+
+  &__img {
+    width: 100px;
+    height: auto;
+
+    @media (min-width: @screen-md) {
+      width: 150px;
+    }
+
+    @media (min-width: @screen-lg) {
+      width: 200px;
+    }
+
+    @media (min-width: @screen-xl) {
+      width: 245px;
+    }
+  }
+}

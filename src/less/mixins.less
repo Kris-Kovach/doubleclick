@@ -1,0 +1,23 @@
+.container() {
+  margin-right: auto;
+  margin-left: auto;
+  width: @container-xs;
+  padding-left: 14px;
+  padding-right: 14px;
+
+  @media (min-width: @screen-sm) {
+    width: @container-sm;
+  }
+
+  @media (min-width: @screen-md) {
+    width: @container-md;
+  }
+
+  @media (min-width: @screen-lg) {
+    width: @container-lg;
+  }
+
+  @media (min-width: @screen-xl) {
+    width: @container-xl;
+  }
+}

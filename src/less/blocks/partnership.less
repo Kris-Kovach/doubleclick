@@ -1,0 +1,23 @@
+.partnership {
+  padding-top: 20px;
+  padding-bottom: 25px;
+  background-color: #366949;
+  color: #fff;
+
+  &__inner {
+    .container();
+  }
+
+  &__items {
+    @media (min-width: @screen-md) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    @media (min-width: @screen-md) {
+      width: 50%;
+    }
+  }
+}

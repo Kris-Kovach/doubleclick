@@ -1,0 +1,49 @@
+.callback {
+  padding-top: 20px;
+  padding-bottom: 25px;
+  background-color: #6a685a;
+  color: #fff;
+
+  &__inner {
+    .container();
+
+    @media (min-width: @screen-lg) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__title {
+
+    @media (min-width: @screen-lg) {
+      text-align: left;
+    }
+  }
+
+  &__text {
+    margin-bottom: 30px;
+    text-align: center;
+
+    @media (min-width: @screen-lg) {
+      width: 50%;
+      text-align: left;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__agreement {
+    font-size: 12px;
+  }
+
+  &__link {
+    color: @light-green;
+  }
+}

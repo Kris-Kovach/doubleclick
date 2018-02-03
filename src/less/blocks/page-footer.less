@@ -1,0 +1,18 @@
+.page-footer {
+  background-color: @color-main;
+  color: @light-blue;
+
+  &__inner {
+    .container();
+
+    @media (min-width: @screen-sm) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+
+  &__terms {
+    color: @light-blue;
+  }
+}

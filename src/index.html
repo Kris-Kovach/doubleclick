@@ -4,15 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Doubleclick</title>
+  <title>DoubleClick</title>
   <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
   <header class="page-header">
     <div class="page-header__inner">
       <div class="logo">
-        <img src="img/logo.svg" alt="Логотип Doubleclick">
+        <picture>
+          <source media="(min-width: 1230px)" srcset="img/doubleclick-logo.svg">
+          <img src="img/doubleclick-logo--mobile.svg" alt="Логотип Doubleclick">
+        </picture>
       </div>
+      <a href="#" class="language-switch">En</a>
       <a href="#" class="main-nav-toggler js-main-nav-toggler"><span></span></a>
       <nav class="main-nav js-main-nav">
         <ul class="main-nav__list">
@@ -20,32 +24,47 @@
           <li class="main-nav__item"><a href="#" class="main-nav__link">Почему Риалвеб</a></li>
           <li class="main-nav__item"><a href="#" class="main-nav__link">Варианты сотрудничества</a></li>
           <li class="main-nav__item"><a href="#" class="main-nav__link">Заявка</a></li>
-          <li class="main-nav__item"><a href="#" class="main-nav__link">Контакты</a></li>
         </ul>
       </nav>
-      <a href="#" class="language-switch">En</a>
     </div>
   </header>
   <main>
     <div class="banner">
       <div class="banner__inner">
         <h1 class="banner__title">
-          Доступ к платформе DoubleClick by Google через сертифицированного маркетингового партнера – агентство Риалвеб
+          Доступ к&nbsp;платформе DoubleClick by&nbsp;Google через сертифицированного маркетингового
+          партнера&nbsp;&mdash; агентство Риалвеб
         </h1>
         <a href="#" class="banner__link" target="_blank">
-          <img src="logo.svg" alt="">
+          <img src="img/realweb-logo.svg" class="banner__img" alt="">
         </a>
       </div>
     </div>
     <section class="products">
       <div class="products__inner">
         <h2 class="section-title  products__title">О продуктах DoubleClick</h2>
-        <div class="tabs products__tabs">
-          <ul class="tabs__nav">
-            <li class="tabs__item"><a href="#" class="tabs__link">Doubleclick Big Manager</a></li>
-            <li class="tabs__item"><a href="#" class="tabs__link">Double Click Campaign Manager</a></li>
-            <li class="tabs__item"><a href="#" class="tabs__link">Double Click Creative Solutions</a></li>
-            <li class="tabs__item"><a href="#" class="tabs__link">Double Click Search Engine Marketing</a></li>
+        <div class="products__tabs  js-products-tabs">
+          <ul class="products__tabs-nav">
+            <li class="products__tabs-item">
+              <a href="#products-tab-1" class="products__tabs-link">
+                <img src="img/doubleclick-big-manager.svg" class="products__tabs-img" alt="Double Click Big Manager">
+              </a>
+            </li>
+            <li class="products__tabs-item">
+              <a href="#products-tab-2" class="products__tabs-link">
+                <img src="img/doubleclick-campaign-manager.svg" class="products__tabs-img" alt="Double Click Campaign Manager">
+              </a>
+            </li>
+            <li class="products__tabs-item">
+              <a href="#products-tab-3" class="products__tabs-link">
+                <img src="img/doubleclick-creative-solutions.svg" class="products__tabs-img" alt="Double Click Creative Solutions">
+              </a>
+            </li>
+            <li class="products__tabs-item">
+              <a href="#products-tab-4" class="products__tabs-link">
+                <img src="img/doubleclick-search-engine.svg" class="products__tabs-img" alt="Double Click Search Engine Marketing">
+              </a>
+            </li>
           </ul>
 
           <div class="products__tab-content" id="products-tab-1">
@@ -68,23 +87,27 @@
               <li class="features-list__item">Видимость</li>
               <li class="features-list__item">Задита бренда</li>
             </ul>
+            <div class="statistics">
+              <h3 class="statistics__title">Медиа-инвентарь в мире</h3>
+              <div class="statistics__items">
+                <div class="statistics__item">
+                  <div class="statistics__numbers"><span>>450</span> миллиардов</div>
+                  <div class="statistics__text">потенциальных показов в день</div>
+                </div>
+                <div class="statistics__item">
+                  <div class="statistics__numbers"><span>>1</span> триллиона</div>
+                  <div class="statistics__text">потенциальных показов в месяц для Video</div>
+                </div>
+                <div class="statistics__item">
+                  <div class="statistics__numbers"><span>>8,5</span> триллионов</div>
+                  <div class="statistics__text">потенциальных показов в месяц для Mobile</div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div class="statistics">
-            <h3 class="statistics__title">Медиа-инвентарь в мире</h3>
-            <div class="statistics__item">
-              <div class="statistics__numbers">>450 миллиардов</div>
-              <div class="statistics__text">потенциальных показов в день</div>
-            </div>
-            <div class="statistics__item">
-              <div class="statistics__numbers">>1 триллиона</div>
-              <div class="statistics__text">потенциальных показов в месяц для Video</div>
-            </div>
-            <div class="statistics__item">
-              <div class="statistics__numbers">>8,5 триллионов</div>
-              <div class="statistics__text">потенциальных показов в месяц для Mobile</div>
-            </div>
-          </div>
+          <div class="products__tab-content" id="products-tab-2">2</div>
+          <div class="products__tab-content" id="products-tab-3">3</div>
+          <div class="products__tab-content" id="products-tab-4">4</div>
         </div>
       </div>
     </section>
@@ -92,18 +115,20 @@
     <section class="advantages">
       <div class="advantages__inner">
         <h2 class="section-title  section-title--white  advantages__title">Почему Риалвеб</h2>
-        <div class="statistics">
-          <div class="statistics__item">
-            <div class="statistics__numbers">>4 лет экспертизы</div>
-            <div class="statistics__text">в Programmatic Buying</div>
-          </div>
-          <div class="statistics__item">
-            <div class="statistics__numbers">№1 в России</div>
-            <div class="statistics__text">получили статус реселлера продуктов DoubleClick</div>
-          </div>
-          <div class="statistics__item">
-            <div class="statistics__numbers">>8,2 миллиардов</div>
-            <div class="statistics__text">открученных показов по Programmatic</div>
+        <div class="statistics  statistics--white">
+          <div class="statistics__items">
+            <div class="statistics__item">
+              <div class="statistics__numbers"><span>>4</span> лет экспертизы</div>
+              <div class="statistics__text">в Programmatic Buying</div>
+            </div>
+            <div class="statistics__item">
+              <div class="statistics__numbers"><span>№1</span> в России</div>
+              <div class="statistics__text">получили статус реселлера продуктов DoubleClick</div>
+            </div>
+            <div class="statistics__item">
+              <div class="statistics__numbers"><span>>8,2</span> миллиардов</div>
+              <div class="statistics__text">открученных показов по Programmatic</div>
+            </div>
           </div>
         </div>
 
@@ -138,24 +163,26 @@
 
     <section class="partnership">
       <div class="partnership__inner">
-        <h2 class="section-title section-title--white partnership__title">Сотрудничество</h2>
-        <div class="partnership__item">
-          <img src="" class="partnership__img" alt="">
-          <div class="partnership__text">
-            <h3 class="partnership__subtitle">Доступ к DoubleClick Bid Manager</h3>
-            <p>Доступ к полному инвентарю платформы: разнообразие таргетингов, форматов и площадок</p>
+        <h2 class="section-title section-title--white partnership__title">Варианты сотрудничества</h2>
+        <div class="partnership__items">
+          <div class="partnership__item">
+            <img src="" class="partnership__img" alt="">
+            <div class="partnership__text">
+              <h3 class="partnership__subtitle">Доступ к DoubleClick Bid Manager</h3>
+              <p>Доступ к полному инвентарю платформы: разнообразие таргетингов, форматов и площадок</p>
+            </div>
           </div>
-        </div>
-        <div class="partnership__item">
-          <img src="" class="partnership__img" alt="">
-          <div class="partnership__text">
-            <h3 class="partnership__subtitle">Консалтинг по DoubleClick Bid Manager</h3>
-            <ul class="dotted-list partnership__list">
-              <li class="dotted-list__item">Вводное обучение</li>
-              <li class="dotted-list__item">Дополнительное обучение</li>
-              <li class="dotted-list__item">Консультации по сертификации</li>
-              <li class="dotted-list__item">Видеозвонки</li>
-            </ul>
+          <div class="partnership__item">
+            <img src="" class="partnership__img" alt="">
+            <div class="partnership__text">
+              <h3 class="partnership__subtitle">Консалтинг по DoubleClick Bid Manager</h3>
+              <ul class="dotted-list partnership__list">
+                <li class="dotted-list__item">Вводное обучение</li>
+                <li class="dotted-list__item">Дополнительное обучение</li>
+                <li class="dotted-list__item">Консультации по сертификации</li>
+                <li class="dotted-list__item">Видеозвонки</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -164,45 +191,54 @@
     <section class="callback">
       <div class="callback__inner">
         <div class="callback__text">
-          <h2 class="section-title  section-title__white  callback__subtitle">Оставить заявку</h2>
+          <h2 class="section-title  section-title--white  callback__title">Оставить заявку</h2>
           <p>
             Заполните форму и наш менеджер свяжется с вами в ближайшее время
           </p>
-          <p>
-            Отправляя заявку, вы соглашаетесь на обработку <a href="#" class="personal-agreement-link">персональных данных</a>
+          <p class="callback__agreement">
+            Отправляя заявку, вы соглашаетесь на обработку <a href="#" class="callback__link">персональных данных</a>
           </p>
         </div>
-        <div class="callback__form-wrap">
-          <form class="callback-form">
-            <input type="text" class="text-field callback-form__text-field">
-            <input type="tel" class="text-field callback-form__text-field">
-            <input type="email" class="text-field callback-form__text-field">
-            <input type="submit" class="btn  btn--submit" value="Отправить">
-          </form>
-        </div>
+        <form class="callback-form">
+          <input type="text" class="field-text callback-form__text-field" name="fullname" placeholder="Представьтесь">
+          <input type="tel" class="field-text callback-form__text-field" name="phone" placeholder="Телефон">
+          <input type="email" class="field-text callback-form__text-field" name="email" placeholder="Эл. почта">
+          <input type="submit" class="btn  btn--submit" value="Отправить">
+        </form>
       </div>
     </section>
 
     <section class="contacts">
       <div class="contacts__inner">
         <h2 class="section-title  contacts__title">Контакты</h2>
-        <div class="tabs  contacts-tabs">
-          <ul class="tabs__list  contacts-tabs__list">
-            <li class="tabs__item  contacts-tabs__item">
-              <a href="#" class="tabs__link  contacts-tabs__link">Петербург</a>
+        <div class="contacts__tabs  js-contacts-tabs">
+          <ul class="contacts__tabs-list">
+            <li class="contacts__tabs-item">
+              <a href="#contacts-tab-1" class="contacts__tabs-link">Петербург</a>
             </li>
-            <li class="tabs__item  contacts-tabs__item">
-              <a href="#" class="tabs__link contacts-tabs__link">Москва</a>
+            <li class="contacts__tabs-item">
+              <a href="#contacts-tab-2" class="contacts__tabs-link">Москва</a>
             </li>
           </ul>
 
           <div class="contacts__tab-content" id="contacts-tab-1">
             <div class="contacts__address">
+              Петербург<br>
               м. Спортивная,<br>
               пр. Добролюбова, д. 16, корп.2, лит. А
             </div>
             <a href="mailto:spb@realweb.ru" class="contacts__email">spb@realweb.ru</a>
             <a href="tel:+78122440880" class="contacts__phone">+7 (812) 244-08-80</a>
+          </div>
+
+          <div class="contacts__tab-content" id="contacts-tab-2">
+            <div class="contacts__address">
+              Москва<br>
+              м. Павелецкая, м. Третьяковская,<br>
+              ул. Большая Татарская, д. 35, стр. 7-9
+            </div>
+            <a href="mailto:msk@realweb.ru" class="contacts__email">msk@realweb.ru</a>
+            <a href="tel:+74952290161 " class="contacts__phone">+7 (495) 229–01–61 </a>
           </div>
         </div>
         <div class="contacts__map" id="contacts-map"></div>
@@ -211,7 +247,7 @@
 
     <div class="clients">
       <div class="clients__inner">
-        <h2 class="section-title section-title--white clients__subtitle">Нам доверяют</h2>
+        <h2 class="section-title section-title--white clients__title">Нам доверяют</h2>
         <div class="clients__items">
           <a href="#" class="clients__link"><img src="" alt="" class="clients__img"></a>
           <a href="#" class="clients__link"><img src="" alt="" class="clients__img"></a>
@@ -229,7 +265,7 @@
   <footer class="page-footer">
     <div class="page-footer__inner">
       <div class="page-footer__copyright">&copy; Риалвеб 2018</div>
-      <a href="#" class="page-footer__terms" target="_blank">Условия использования персональных дамнных</a>
+      <a href="#" class="page-footer__terms" target="_blank">Условия использования персональных данных</a>
     </div>
   </footer>
   <script src="js/script.min.js"></script>
