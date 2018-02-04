@@ -10,10 +10,12 @@
 
     @media (min-width: @screen-md) {
       font-size: 30px;
+      margin-bottom: 15px;
     }
 
     @media (min-width: @screen-xl) {
       font-size: 40px;
+      margin-bottom: 18px;
     }
   }
 
@@ -43,14 +45,31 @@
     color: @color-secondary;
     font-size: 22px;
     font-family: @font-family--titles;
+    font-weight: 400;
+
+    @media (min-width: @screen-xl) {
+      font-size: 50px;
+    }
 
     > span {
       font-size: 32px;
+      font-weight: 400;
+
+      @media (min-width: @screen-xl) {
+        font-size: 70px;
+      }
     }
   }
 
   &__text {
     text-align: center;
+
+    @media (min-width: @screen-xl) {
+      font-size: 20px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   &--white {

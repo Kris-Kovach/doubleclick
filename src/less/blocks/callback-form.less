@@ -5,11 +5,27 @@
 
   @media (min-width: @screen-lg) {
     width: 50%;
+    padding-top: 16px;
+    padding-left: 16px;
+    text-align: left;
+  }
+
+  @media (min-width: @screen-xl) {
+    width: 41.5%;
   }
 
   &__text-field {
-    padding: 7px 10px;
+    padding: 4px 15px;
     width: 100%;
     margin-bottom: 20px;
+    transition: all 0.3s;
+
+    &:focus {
+      border: 2px solid @light-green;
+    }
+
+    @media (min-width: @screen-lg) {
+      margin-bottom: 38px;
+    }
   }
 }

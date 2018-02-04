@@ -4,20 +4,185 @@
   background-color: #366949;
   color: #fff;
 
+  @media (min-width: @screen-md) {
+    position: relative;
+    background-color: transparent;
+    padding-top: 35px;
+  }
+
+  @media (min-width: @screen-xl) {
+    padding-top: 65px;
+    padding-bottom: 85px;
+  }
+
   &__inner {
     .container();
+
+    @media (min-width: @screen-md) {
+      text-align: center;
+    }
+  }
+
+  &__title {
+    position: relative;
+    z-index: 100;
+
+    @media (min-width: @screen-md) {
+      display: inline-block;
+      vertical-align: top;
+      width: auto;
+    }
+
+    @media (min-width: @screen-xl) {
+      margin-bottom: 65px;
+    }
   }
 
   &__items {
     @media (min-width: @screen-md) {
       display: flex;
       flex-wrap: wrap;
+      text-align: left;
     }
   }
 
   &__item {
+
     @media (min-width: @screen-md) {
+      display: flex;
       width: 50%;
+    }
+
+    &--access {
+
+      @media (min-width: @screen-xl) {
+        padding-right: 90px;
+      }
+
+      &:before {
+        display: none;
+        position: absolute;
+        content: '';
+        width: 50%;
+        height: 100%;
+        background: url('../img/partnership-bg-1.jpg') center center no-repeat;
+        background-size: cover;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+
+        @media (min-width: @screen-md) {
+          display: block;
+        }
+      }
+
+      &:after {
+        display: none;
+        position: absolute;
+        content: '';
+        width: 50%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
+        opacity: 0;
+        transition: all 0.3s;
+
+        @media (min-width: @screen-md) {
+          display: block;
+        }
+      }
+
+      @media (min-width: @screen-md) {
+        &:hover:after {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &--consult {
+
+      @media (min-width: @screen-xl) {
+        padding-left: 70px;
+      }
+
+      &:before {
+        display: none;
+        position: absolute;
+        content: '';
+        width: 50%;
+        height: 100%;
+        background: url('../img/partnership-bg-2.jpg') center center no-repeat;
+        background-size: cover;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+
+        @media (min-width: @screen-md) {
+          display: block;
+        }
+      }
+
+      &:after {
+        display: none;
+        position: absolute;
+        content: '';
+        width: 50%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background-color: #000;
+        opacity: 0;
+        transition: all 0.3s;
+
+        @media (min-width: @screen-md) {
+          display: block;
+        }
+      }
+
+      @media (min-width: @screen-md) {
+        &:hover:after {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  &__img {
+    position: relative;
+    z-index: 100;
+
+    @media (min-width: @screen-lg) {
+      width: 145px;
+      height: 145px;
+      margin-right: 33px;
+    }
+  }
+
+  &__text {
+    position: relative;
+    z-index: 100;
+
+    @media (min-width: @screen-lg) {
+      width: calc(~"100% - 178px");
+    }
+  }
+
+  &__subtitle {
+    font-family: @font-family--titles;
+    font-weight: 400;
+    font-size: 22px;
+    margin-top: 0;
+    line-height: 1.2;
+    margin-bottom: 13px;
+
+    @media (min-width: @screen-lg) {
+      font-size: 40px;
+      margin-bottom: 18px;
     }
   }
 }

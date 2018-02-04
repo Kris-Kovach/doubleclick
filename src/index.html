@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>DoubleClick</title>
   <link rel="stylesheet" href="css/style.min.css">
+  <script defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCucaDQMUlGLdMgVJsnRq_kLzhf4S9Z4uQ&callback=initMap"></script>
 </head>
 <body>
   <header class="page-header">
@@ -67,10 +69,10 @@
             </li>
           </ul>
 
-          <div class="products__tab-content" id="products-tab-1">
+          <div class="products__tabs-content" id="products-tab-1">
             <p class="products__descr">
-              Передовая programmatic-платформа  от Google для закупки медийной рекламы с доступом
-              к многообразию площадок и аудиторных данных.
+              Передовая programmatic-платформа от&nbsp;Google для закупки медийной рекламы с&nbsp;доступом
+              к&nbsp;многообразию площадок и&nbsp;аудиторных данных.
             </p>
             <ul class="features-list">
               <li class="features-list__item">Тематический таргетинг</li>
@@ -92,22 +94,22 @@
               <div class="statistics__items">
                 <div class="statistics__item">
                   <div class="statistics__numbers"><span>>450</span> миллиардов</div>
-                  <div class="statistics__text">потенциальных показов в день</div>
+                  <div class="statistics__text">потенциальных показов в&nbsp;день</div>
                 </div>
                 <div class="statistics__item">
                   <div class="statistics__numbers"><span>>1</span> триллиона</div>
-                  <div class="statistics__text">потенциальных показов в месяц для Video</div>
+                  <div class="statistics__text">потенциальных показов в&nbsp;месяц для Video</div>
                 </div>
                 <div class="statistics__item">
                   <div class="statistics__numbers"><span>>8,5</span> триллионов</div>
-                  <div class="statistics__text">потенциальных показов в месяц для Mobile</div>
+                  <div class="statistics__text">потенциальных показов в&nbsp;месяц для Mobile</div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="products__tab-content" id="products-tab-2">2</div>
-          <div class="products__tab-content" id="products-tab-3">3</div>
-          <div class="products__tab-content" id="products-tab-4">4</div>
+          <div class="products__tabs-content" id="products-tab-2">2</div>
+          <div class="products__tabs-content" id="products-tab-3">3</div>
+          <div class="products__tabs-content" id="products-tab-4">4</div>
         </div>
       </div>
     </section>
@@ -115,7 +117,7 @@
     <section class="advantages">
       <div class="advantages__inner">
         <h2 class="section-title  section-title--white  advantages__title">Почему Риалвеб</h2>
-        <div class="statistics  statistics--white">
+        <div class="statistics  statistics--white  advantages__statistics">
           <div class="statistics__items">
             <div class="statistics__item">
               <div class="statistics__numbers"><span>>4</span> лет экспертизы</div>
@@ -132,32 +134,32 @@
           </div>
         </div>
 
-        <ul class="advantages__list">
-          <li class="advantages__item">
-            <img src="" alt="" class="advantages__img">
+        <div class="advantages__items">
+          <div class="advantages__item">
+            <svg class="advantages__img"><use xlink:href="#icon-team"></use></svg>
             <span class="advantages__text">
               Команды в Москве и Санкт-Петербурге по programmatic buying, контекстной рекламе и аналитике
             </span>
-          </li>
-          <li class="advantages__item">
-            <img src="" alt="" class="advantages__img">
-            <span class="advantages__text">
-              Глубокая экспертиза в использовании продуктов DoubleClick
-            </span>
-          </li>
-          <li class="advantages__item">
-            <img src="" alt="" class="advantages__img">
+          </div>
+          <div class="advantages__item">
+            <svg class="advantages__img"><use xlink:href="#icon-rulers"></use></svg>
             <span class="advantages__text">
               Команда по созданию рекламных материалов (баннеры, видео, интерактив) и лендингов
             </span>
-          </li>
-          <li class="advantages__item">
-            <img src="" alt="" class="advantages__img">
+          </div>
+          <div class="advantages__item">
+            <svg class="advantages__img"><use xlink:href="#icon-microscope"></use></svg>
+            <span class="advantages__text">
+              Глубокая экспертиза в использовании продуктов DoubleClick
+            </span>
+          </div>
+          <div class="advantages__item">
+            <svg class="advantages__img"><use xlink:href="#icon-callcenter"></use></svg>
             <span class="advantages__text">
               Русскоговорящая техническая поддержка
             </span>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -165,15 +167,15 @@
       <div class="partnership__inner">
         <h2 class="section-title section-title--white partnership__title">Варианты сотрудничества</h2>
         <div class="partnership__items">
-          <div class="partnership__item">
-            <img src="" class="partnership__img" alt="">
+          <div class="partnership__item  partnership__item--access">
+            <svg class="partnership__img"><use xlink:href="#icon-plug"></use></svg>
             <div class="partnership__text">
               <h3 class="partnership__subtitle">Доступ к DoubleClick Bid Manager</h3>
               <p>Доступ к полному инвентарю платформы: разнообразие таргетингов, форматов и площадок</p>
             </div>
           </div>
-          <div class="partnership__item">
-            <img src="" class="partnership__img" alt="">
+          <div class="partnership__item  partnership__item--consult">
+            <svg class="partnership__img"><use xlink:href="#icon-consult"></use></svg>
             <div class="partnership__text">
               <h3 class="partnership__subtitle">Консалтинг по DoubleClick Bid Manager</h3>
               <ul class="dotted-list partnership__list">
@@ -210,20 +212,25 @@
 
     <section class="contacts">
       <div class="contacts__inner">
-        <h2 class="section-title  contacts__title">Контакты</h2>
         <div class="contacts__tabs  js-contacts-tabs">
+          <h2 class="section-title  contacts__title">Контакты</h2>
           <ul class="contacts__tabs-list">
             <li class="contacts__tabs-item">
-              <a href="#contacts-tab-1" class="contacts__tabs-link">Петербург</a>
+              <a href="#contacts-tab-1" class="contacts__tabs-link  js-contacts-tab" data-lat="59.950195"
+                 data-lng="30.294754">
+                Петербург
+              </a>
             </li>
             <li class="contacts__tabs-item">
-              <a href="#contacts-tab-2" class="contacts__tabs-link">Москва</a>
+              <a href="#contacts-tab-2" class="contacts__tabs-link  js-contacts-tab" data-lat="55.737482"
+                 data-lng="37.636704">
+                Москва
+              </a>
             </li>
           </ul>
 
           <div class="contacts__tab-content" id="contacts-tab-1">
             <div class="contacts__address">
-              Петербург<br>
               м. Спортивная,<br>
               пр. Добролюбова, д. 16, корп.2, лит. А
             </div>
@@ -233,7 +240,6 @@
 
           <div class="contacts__tab-content" id="contacts-tab-2">
             <div class="contacts__address">
-              Москва<br>
               м. Павелецкая, м. Третьяковская,<br>
               ул. Большая Татарская, д. 35, стр. 7-9
             </div>
@@ -241,22 +247,63 @@
             <a href="tel:+74952290161 " class="contacts__phone">+7 (495) 229–01–61 </a>
           </div>
         </div>
-        <div class="contacts__map" id="contacts-map"></div>
       </div>
+
+      <div class="contacts__map  js-contacts-map"></div>
     </section>
 
     <div class="clients">
       <div class="clients__inner">
         <h2 class="section-title section-title--white clients__title">Нам доверяют</h2>
         <div class="clients__items">
-          <a href="#" class="clients__link"><img src="" alt="" class="clients__img"></a>
-          <a href="#" class="clients__link"><img src="" alt="" class="clients__img"></a>
-          <a href="#" class="clients__link"><img src="" alt="" class="clients__img"></a>
-          <a href="#" class="clients__link"><img src="" alt="" class="clients__img"></a>
-          <a href="#" class="clients__link"><img src="" alt="" class="clients__img"></a>
-          <a href="#" class="clients__link"><img src="" alt="" class="clients__img"></a>
-          <a href="#" class="clients__link"><img src="" alt="" class="clients__img"></a>
-          <a href="#" class="clients__link"><img src="" alt="" class="clients__img"></a>
+          <div class="clients__item">
+            <img src="img/clients-1.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-2.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-3.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-4.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-5.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-6.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-7.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-8.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-9.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-10.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-11.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-12.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-13.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-14.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-15.png" class="clients__logo" alt="">
+          </div>
+          <div class="clients__item">
+            <img src="img/clients-16.png" class="clients__logo" alt="">
+          </div>
         </div>
       </div>
     </div>

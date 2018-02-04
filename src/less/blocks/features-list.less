@@ -1,0 +1,43 @@
+.features-list {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 20px;
+
+  @media (min-width: @screen-md) {
+    column-count: 2;
+  }
+
+  @media (min-width: @screen-lg) {
+    margin-bottom: 45px;
+  }
+
+  &__item {
+    position: relative;
+    line-height: 30px;
+
+    @media (min-width: @screen-xl) {
+      padding-left: 60px;
+      margin-bottom: 18px;
+      line-height: 42px;
+    }
+
+    &:before {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background: url('../img/tick.svg') center center no-repeat;
+      background-size: contain;
+
+      @media (min-width: @screen-xl) {
+        width: 42px;
+        height: 42px;
+      }
+    }
+  }
+}

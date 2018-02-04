@@ -159,27 +159,10 @@ gulp.task('clean', function () {
 // Конкатенация и углификация Javascript
 gulp.task('js', function () {
   return gulp.src([
-    // dirs.source + '/js/jquery-3.1.0.min.js',
-    // dirs.source + '/js/jquery-migrate-1.4.1.min.js',
-    // dirs.source + '/js/jquery.validate.js',
-    // dirs.source + '/js/validate.messages.js',
-    // dirs.source + '/js/jquery.fancybox.min.js',
-    // dirs.source + '/js/url-polyfill.js',
-    // dirs.source + '/js/picturefill.min.js',
-    // dirs.source + '/js/owl.carousel.min.js',
-    // dirs.source + '/js/datepicker.min.js',
-    // dirs.source + '/js/select2.min.js',
-    // dirs.source + '/js/inputmask.js',
-    // dirs.source + '/js/jquery.inputmask.js',
-    // dirs.source + '/js/inputmask.phone.extensions.js',
-    // dirs.source + '/js/inputmask.date.extensions.js',
-    // dirs.source + '/js/phone-ru.js',
-    // dirs.source + '/js/social-likes.min.js',
-    // dirs.source + '/js/jquery.mCustomScrollbar.concat.min.js',
-    // dirs.source + '/js/svg-sprite.js',
-    // dirs.source + '/js/mail.js',
-    // dirs.source + '/js/piano.js',
-    dirs.source + '/js/script.js'
+    dirs.source + '/js/vendor/jquery-3.3.1.min.js',
+    dirs.source + '/js/vendor/jquery-migrate-3.0.0.min.js',
+    dirs.source + '/js/vendor/*.js',
+    dirs.source + '/js/assets/*.js'
   ])
     .pipe(plumber({ errorHandler: onError }))
     .pipe(concat('script.min.js'))
@@ -195,22 +178,6 @@ gulp.task('fonts', function () {
     dirs.source + '/fonts/*.woff2'
   ])
     .pipe(gulp.dest(dirs.build + '/fonts'));
-});
-
-// Копирование сэмплов
-
-gulp.task('samples', function () {
-  return gulp.src([
-    dirs.source + '/samples/*.mp3'
-  ])
-    .pipe(gulp.dest(dirs.build + '/samples'));
-});
-
-gulp.task('copy-js', function () {
-  return gulp.src([
-    dirs.source + '/js/piano.js'
-  ])
-    .pipe(gulp.dest(dirs.build + '/js'));
 });
 
 
@@ -264,7 +231,7 @@ gulp.task('build', gulp.series(
   'clean',
   'svgstore',
   'png:sprite',
-  gulp.parallel('less', 'img', 'js', 'fonts', 'samples'),
+  gulp.parallel('less', 'img', 'js', 'fonts'),
   'pug',
   'html'
 ));

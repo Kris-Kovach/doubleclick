@@ -3,6 +3,16 @@
   padding-bottom: 25px;
   background-color: #fff;
 
+  @media (min-width: @screen-md) {
+    padding-top: 40px;
+    padding-bottom: 45px;
+  }
+
+  @media (min-width: @screen-xl) {
+    padding-top: 65px;
+    padding-bottom: 60px;
+  }
+
   &__inner {
     .container();
   }
@@ -12,6 +22,14 @@
 
     @media (min-width: @screen-md) {
       margin-bottom: 25px;
+    }
+
+    @media (min-width: @screen-lg) {
+      margin-bottom: 35px;
+    }
+
+    @media (min-width: @screen-xl) {
+      margin-bottom: 40px;
     }
   }
 
@@ -29,13 +47,24 @@
     max-width: 100%;
 
     @media (min-width: @screen-xl) {
-      height: 50px;
+      height: 51px;
     }
   }
 
   &__descr {
     margin-top: 0;
     text-align: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: @screen-md) {
+      font-size: 20px;
+    }
+
+    @media (min-width: @screen-lg) {
+      margin-bottom: 55px;
+    }
   }
 
   // Custom styles for ResponsiveTabs plugin
@@ -52,7 +81,7 @@
     }
 
     @media (min-width: @screen-xl) {
-      padding: 14px 15px;
+      padding: 13px 25px 13px 15px;
     }
   }
 
@@ -61,6 +90,12 @@
     opacity: 0.5;
     border: 2px solid transparent;
     border-radius: 80px;
+    transition: all 0.3s;
+
+    &:hover,
+    &:active {
+      opacity: 1;
+    }
   }
 
   .r-tabs-accordion-title.r-tabs-state-active,
@@ -84,7 +119,11 @@
     padding: 15px 0;
 
     @media (min-width: @screen-lg) {
-      padding: 0;
+      padding-top: 40px;
+    }
+
+    @media (min-width: @screen-xl) {
+      padding-top: 60px;
     }
   }
 }

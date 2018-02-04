@@ -1,0 +1,33 @@
+.dotted-list {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+  padding-left: 0;
+
+  &__item {
+    position: relative;
+    padding-left: 10px;
+    margin-bottom: 7px;
+
+    @media (min-width: @screen-md) {
+      padding-left: 15px;
+      margin-bottom: 10px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:before {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 5px;
+      height: 5px;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+  }
+}
