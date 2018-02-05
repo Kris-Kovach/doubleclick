@@ -26,6 +26,7 @@
   &__title {
     position: relative;
     z-index: 100;
+    margin-bottom: 30px;
 
     @media (min-width: @screen-md) {
       display: inline-block;
@@ -47,13 +48,34 @@
   }
 
   &__item {
+    text-align: center;
+    margin-bottom: 25px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     @media (min-width: @screen-md) {
       display: flex;
       width: 50%;
+      text-align: left;
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    @media (min-width: @screen-lg) {
+      font-size: 16px;
+    }
+
+    @media (min-width: @screen-xl) {
+      font-size: 18px;
     }
 
     &--access {
+
+      @media (min-width: @screen-md) {
+        padding-right: 20px;
+      }
 
       @media (min-width: @screen-xl) {
         padding-right: 90px;
@@ -103,6 +125,10 @@
     }
 
     &--consult {
+
+      @media (min-width: @screen-md) {
+        padding-left: 20px;
+      }
 
       @media (min-width: @screen-xl) {
         padding-left: 70px;
@@ -154,9 +180,29 @@
 
   &__img {
     position: relative;
+    display: block;
     z-index: 100;
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+
+    @media (min-width: @screen-md) {
+      width: 70px;
+      height: 70px;
+      margin-left: 0;
+      margin-right: 15px;
+      margin-bottom: 0;
+    }
 
     @media (min-width: @screen-lg) {
+      width: 100px;
+      height: 100px;
+      margin-right: 25px;
+    }
+
+    @media (min-width: @screen-xl) {
       width: 145px;
       height: 145px;
       margin-right: 33px;
@@ -166,6 +212,10 @@
   &__text {
     position: relative;
     z-index: 100;
+
+    @media (min-width: @screen-md) {
+      width: calc(~"100% - 115px");
+    }
 
     @media (min-width: @screen-lg) {
       width: calc(~"100% - 178px");
@@ -181,8 +231,18 @@
     margin-bottom: 13px;
 
     @media (min-width: @screen-lg) {
+      font-size: 30px;
+    }
+
+    @media (min-width: @screen-xl) {
       font-size: 40px;
       margin-bottom: 18px;
     }
+  }
+
+  &__list {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

@@ -1,6 +1,5 @@
 .features-list {
   margin-top: 0;
-  margin-bottom: 0;
   padding-left: 0;
   list-style: none;
   margin-bottom: 20px;
@@ -16,6 +15,7 @@
   &__item {
     position: relative;
     line-height: 30px;
+    padding-left: 30px;
 
     @media (min-width: @screen-xl) {
       padding-left: 60px;
@@ -26,11 +26,10 @@
     &:before {
       position: absolute;
       content: '';
-      top: 50%;
+      top: 5px;
       left: 0;
-      transform: translateY(-50%);
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       background: url('../img/tick.svg') center center no-repeat;
       background-size: contain;
 

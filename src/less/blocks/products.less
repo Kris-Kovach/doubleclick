@@ -116,14 +116,25 @@
   }
 
   .r-tabs .r-tabs-panel {
-    padding: 15px 0;
+    padding: 15px 5px;
 
     @media (min-width: @screen-lg) {
-      padding-top: 40px;
+      padding: 40px 0 0;
     }
 
     @media (min-width: @screen-xl) {
       padding-top: 60px;
+    }
+  }
+
+  /* Accordion responsive breakpoint */
+  @media only screen and (max-width: @screen-md-max) {
+    .r-tabs .r-tabs-nav {
+      display: none;
+    }
+
+    .r-tabs .r-tabs-accordion-title {
+      display: block;
     }
   }
 }
