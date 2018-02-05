@@ -22,10 +22,10 @@
       <a href="#" class="main-nav-toggler js-main-nav-toggler"><span></span></a>
       <nav class="main-nav js-main-nav">
         <ul class="main-nav__list">
-          <li class="main-nav__item"><a href="#" class="main-nav__link">О продуктах DoubleClick</a></li>
-          <li class="main-nav__item"><a href="#" class="main-nav__link">Почему Риалвеб</a></li>
-          <li class="main-nav__item"><a href="#" class="main-nav__link">Варианты сотрудничества</a></li>
-          <li class="main-nav__item"><a href="#" class="main-nav__link">Заявка</a></li>
+          <li class="main-nav__item"><a href="#products" class="main-nav__link">О продуктах DoubleClick</a></li>
+          <li class="main-nav__item"><a href="#advantages" class="main-nav__link">Почему Риалвеб</a></li>
+          <li class="main-nav__item"><a href="#partnership" class="main-nav__link">Варианты сотрудничества</a></li>
+          <li class="main-nav__item"><a href="#callback" class="main-nav__link">Заявка</a></li>
         </ul>
       </nav>
     </div>
@@ -34,17 +34,16 @@
     <div class="banner">
       <div class="banner__inner">
         <h1 class="banner__title">
-          Доступ к&nbsp;платформе DoubleClick by&nbsp;Google через сертифицированного маркетингового
-          партнера&nbsp;&mdash; агентство Риалвеб
+          Доступ к&nbsp;платформе DoubleClick by&nbsp;Google через сертифицированного маркетингового партнера&nbsp;&mdash; агентство Риалвеб
         </h1>
         <a href="#" class="banner__link" target="_blank">
           <img src="img/realweb-logo.svg" class="banner__img" alt="">
         </a>
       </div>
     </div>
-    <section class="products">
+    <section class="products" id="products">
       <div class="products__inner">
-        <h2 class="section-title  products__title">О продуктах DoubleClick</h2>
+        <h2 class="section-title  products__title">О&nbsp;продуктах DoubleClick</h2>
         <div class="products__tabs  js-products-tabs">
           <ul class="products__tabs-nav">
             <li class="products__tabs-item">
@@ -74,21 +73,30 @@
               Передовая programmatic-платформа от&nbsp;Google для закупки медийной рекламы с&nbsp;доступом
               к&nbsp;многообразию площадок и&nbsp;аудиторных данных.
             </p>
-            <ul class="features-list">
-              <li class="features-list__item">Тематический таргетинг</li>
-              <li class="features-list__item">Контентный таргетинг</li>
-              <li class="features-list__item">Демографический таргетинг</li>
-              <li class="features-list__item">Аудиторный таргетинг (поведение и интересы look-a-like)</li>
-              <li class="features-list__item">Кастомный таргетинг</li>
-              <li class="features-list__item">Окружение: Desktop, Mobile</li>
-              <li class="features-list__item">Apps & URLs таргетинг</li>
-              <li class="features-list__item">Устройства / браузеры</li>
-              <li class="features-list__item">Динамический ремаркетинг</li>
-              <li class="features-list__item">Форматы: баннер, inn-banner, in-stream, rich-media</li>
-              <li class="features-list__item">Защита от фрода</li>
-              <li class="features-list__item">Видимость</li>
-              <li class="features-list__item">Задита бренда</li>
-            </ul>
+
+            <div class="products__tabs-inner">
+              <div class="products__left-column">
+                <ul class="features-list  products__list">
+                  <li class="features-list__item">Тематический таргетинг</li>
+                  <li class="features-list__item">Контентный таргетинг</li>
+                  <li class="features-list__item">Демографический таргетинг</li>
+                  <li class="features-list__item">Аудиторный таргетинг (поведение и&nbsp;интересы, look-alike)</li>
+                  <li class="features-list__item">Кастомный таргетинг</li>
+                  <li class="features-list__item">Окружение: Desktop, Mobile</li>
+                  <li class="features-list__item">Apps &amp;&nbsp;URLs таргетинг</li>
+                </ul>
+              </div>
+              <div class="products__right-column">
+                <ul class="features-list  products__list">
+                  <li class="features-list__item">Устройства / браузеры</li>
+                  <li class="features-list__item">Динамический ремаркетинг</li>
+                  <li class="features-list__item">Форматы: баннер, inn-banner, in-stream, rich-media</li>
+                  <li class="features-list__item">Защита от фрода</li>
+                  <li class="features-list__item">Видимость</li>
+                  <li class="features-list__item">Задита бренда</li>
+                </ul>
+              </div>
+            </div>
             <div class="statistics">
               <h3 class="statistics__title">Медиа-инвентарь в мире</h3>
               <div class="statistics__items">
@@ -107,14 +115,116 @@
               </div>
             </div>
           </div>
-          <div class="products__tabs-content" id="products-tab-2">2</div>
-          <div class="products__tabs-content" id="products-tab-3">3</div>
-          <div class="products__tabs-content" id="products-tab-4">4</div>
+          <div class="products__tabs-content" id="products-tab-2">
+            <p class="products__descr">
+              Рекламный сервер для прометки рекламы и&nbsp;анализа всех рекламных взаимодействий, а&nbsp;также
+              управления креативами
+            </p>
+            <div class="products__tabs-inner">
+              <div class="products__left-column">
+                <div class="products__list-wrap">
+                  <div class="products__list-title  products__list-title--audit">Аудит рекламы</div>
+                  <ul class="features-list">
+                    <li class="features-list__item">Пиксели на&nbsp;показ, кликовые ссылки</li>
+                    <li class="features-list__item">Размещение по&nbsp;коду</li>
+                  </ul>
+                </div>
+                <div class="products__list-wrap">
+                  <div class="products__list-title  products__list-title--creative">Управление креативами</div>
+                  <ul class="features-list">
+                    <li class="features-list__item">Конструктор креативов DoubleClick Studio</li>
+                    <li class="features-list__item">Мультимедийные креативы (rich media)</li>
+                    <li class="features-list__item">Динамические креативы</li>
+                    <li class="features-list__item">Сценарии и&nbsp;оптимизация ротации</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="products__right-column">
+                <div class="products__list-wrap">
+                  <div class="products__list-title  products__list-title--paper">Полная отчетность по&nbsp;рекламе</div>
+                  <ul class="features-list">
+                    <li class="features-list__item">Показы, клики, конверсии, стоимость</li>
+                    <li class="features-list__item">Охват</li>
+                    <li class="features-list__item">Видимость и&nbsp;Верификация</li>
+                    <li class="features-list__item">Атрибуция</li>
+                    <li class="features-list__item">Лог-файлы Data Transfer</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="products__tabs-content" id="products-tab-3">
+            <p class="products__descr">
+              Единая платформа для управления поисковой рекламой в&nbsp;разных поисковых системах. Надстройка над
+              поисковыми системами для получения общей статистики, управления и&nbsp;оптимизации поисковыми кампаниями
+            </p>
+            <div class="products__tabs-inner">
+              <div class="products__left-column">
+                <div class="products__list-wrap">
+                  <div class="products__list-title  products__list-title--paper">Единая отчетность и&nbsp;управление</div>
+                  <ul class="features-list">
+                    <li class="features-list__item">Сводная отчетность по&nbsp;всем поисковым кампаниям</li>
+                    <li class="features-list__item">Конструктор отчетов, пользовательские переменные, дашборды</li>
+                    <li class="features-list__item">
+                      Общее управление поисковыми кампаниями в&nbsp;Google AdWords + Bing Ads
+                      + Yahoo! Japan + Baidu
+                    </li>
+                    <li class="features-list__item">
+                      Массовые изменения, изменения по&nbsp;расписанию и&nbsp;правилам, кампании по&nbsp;шаблону и&nbsp;фиду
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="products__right-column">
+                <div class="products__list-wrap">
+                  <div class="products__list-title  products__list-title--optimization">Оптимизация</div>
+                  <ul class="features-list">
+                    <li class="features-list__item">Автоматические стратегии оптимизации</li>
+                    <li class="features-list__item">
+                      Оптимизация по&nbsp;кликам, конверсия, позиции, ROI, по&nbsp;любым переменным и&nbsp;весам
+                    </li>
+                    <li class="features-list__item">
+                      Оптимизация по&nbsp;портфелю аккаунтов, кампаний, групп или ключевых слов
+                    </li>
+                    <li class="features-list__item">
+                      Рекомендации по&nbsp;улучшению результатов, прогнозы по&nbsp;затратам и&nbsp;целевым показателям
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="products__tabs-content" id="products-tab-4">
+            <div class="products__features">
+              <div class="products__features-item">
+                <svg class="products__features-img"><use xlink:href="#icon-lib"></use></svg>
+                <div class="products__features-title">Библиотека материалов</div>
+                <p>Хостинг всех креативных материалов в&nbsp;одном месте</p>
+              </div>
+              <div class="products__features-item">
+                <svg class="products__features-img"><use xlink:href="#icon-rocket"></use></svg>
+                <div class="products__features-title">
+                  Динамический креатив
+                </div>
+                <p>
+                  Полный контроль и&nbsp;гибкое управление динамическими креативами
+                </p>
+              </div>
+              <div class="products__features-item">
+                <svg class="products__features-img"><use xlink:href="#icon-measures"></use></svg>
+                <div class="products__features-title">Quality Control</div>
+                <p>
+                  Quality Assurance&nbsp;&mdash; техническая проверка и&nbsp;поиск багов в&nbsp;креативах
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="advantages">
+    <section class="advantages" id="advantages">
       <div class="advantages__inner">
         <h2 class="section-title  section-title--white  advantages__title">Почему Риалвеб</h2>
         <div class="statistics  statistics--white  advantages__statistics">
@@ -163,7 +273,7 @@
       </div>
     </section>
 
-    <section class="partnership">
+    <section class="partnership" id="partnership">
       <div class="partnership__inner">
         <h2 class="section-title section-title--white partnership__title">Варианты сотрудничества</h2>
         <div class="partnership__items">
@@ -190,7 +300,7 @@
       </div>
     </section>
 
-    <section class="callback">
+    <section class="callback" id="callback">
       <div class="callback__inner">
         <div class="callback__text">
           <h2 class="section-title  section-title--white  callback__title">Оставить заявку</h2>
@@ -201,10 +311,12 @@
             Отправляя заявку, вы соглашаетесь на обработку <a href="#" class="callback__link">персональных данных</a>
           </p>
         </div>
-        <form class="callback-form">
+        <form class="callback-form  js-callback-form">
           <input type="text" class="field-text callback-form__text-field" name="fullname" placeholder="Представьтесь">
-          <input type="tel" class="field-text callback-form__text-field" name="phone" placeholder="Телефон">
-          <input type="email" class="field-text callback-form__text-field" name="email" placeholder="Эл. почта">
+          <input type="tel" class="field-text callback-form__text-field  js-field-phone validation-group" name="phone"
+                 placeholder="Телефон">
+          <input type="email" class="field-text callback-form__text-field  validation-group" name="email"
+                 placeholder="Эл. почта">
           <input type="submit" class="btn  btn--submit" value="Отправить">
         </form>
       </div>
@@ -230,7 +342,7 @@
               </li>
             </ul>
 
-            <div class="contacts__tab-content" id="contacts-tab-1">
+            <div class="contacts__tabs-content" id="contacts-tab-1">
               <div class="contacts__address">
                 м. Спортивная,<br>
                 пр. Добролюбова, д. 16, корп.2, лит. А
@@ -239,7 +351,7 @@
               <a href="tel:+78122440880" class="contacts__phone">+7 (812) 244-08-80</a>
             </div>
 
-            <div class="contacts__tab-content" id="contacts-tab-2">
+            <div class="contacts__tabs-content" id="contacts-tab-2">
               <div class="contacts__address">
                 м. Павелецкая, м. Третьяковская,<br>
                 ул. Большая Татарская, д. 35, стр. 7-9
@@ -250,7 +362,6 @@
           </div>
         </div>
       </div>
-
       <div class="contacts__map  js-contacts-map"></div>
     </section>
 
