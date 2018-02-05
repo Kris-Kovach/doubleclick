@@ -2,34 +2,30 @@
   margin-top: 0;
   padding-left: 0;
   list-style: none;
-  margin-bottom: 20px;
-
-  @media (min-width: @screen-md) {
-    column-count: 2;
-  }
-
-  @media (min-width: @screen-lg) {
-    margin-bottom: 45px;
-  }
 
   &__item {
     position: relative;
-    line-height: 30px;
-    padding-left: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    line-height: 1.2;
+    margin-bottom: 13px;
+    min-height: 28px;
 
     @media (min-width: @screen-xl) {
-      padding-left: 60px;
+      padding-left: 65px;
       margin-bottom: 18px;
-      line-height: 42px;
+      min-height: 42px;
     }
 
     &:before {
       position: absolute;
       content: '';
-      top: 5px;
+      top: 50%;
       left: 0;
-      width: 20px;
-      height: 20px;
+      transform: translateY(-50% );
+      width: 28px;
+      height: 28px;
       background: url('../img/tick.svg') center center no-repeat;
       background-size: contain;
 

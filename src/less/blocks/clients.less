@@ -1,4 +1,6 @@
 .clients {
+  padding-top: 20px;
+  padding-bottom: 30px;
   background-color: #353535;
 
   @media (min-width: @screen-lg) {
@@ -33,9 +35,16 @@
     align-items: center;
     justify-content: center;
     opacity: 0.3;
+    width: 50%;
+    margin-bottom: 15px;
 
     &:hover {
       opacity: 1;
+    }
+
+    @media (min-width: @screen-md) {
+      width: 33.3333%;
+      margin-bottom: 40px;
     }
 
     @media (min-width: @screen-lg) {

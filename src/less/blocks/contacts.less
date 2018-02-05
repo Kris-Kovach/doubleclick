@@ -6,15 +6,19 @@
   @media (min-width: @screen-md) {
     padding-top: 0;
     padding-bottom: 0;
-    min-height: 400px;
+    height: 400px;
   }
 
   @media (min-width: @screen-lg) {
-    min-height: 550px;
+    height: 550px;
   }
 
   &__inner {
     .container();
+
+    @media (min-width: @screen-md) {
+      height: 100%;
+    }
   }
 
   &__email {
@@ -31,10 +35,14 @@
   }
 
   &__info {
+    background-color: #fff;
 
     @media (min-width: @screen-md) {
+      position: relative;
+      z-index: 100;
       padding-top: 40px;
       width: 40%;
+      height: 100%;
     }
 
     @media (min-width: @screen-xl) {
@@ -48,6 +56,100 @@
       text-align: center;
       margin-bottom: 30px;
     }
+  }
+
+  &__tabs-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0;
+  }
+
+  &__tabs-item {
+    @media (min-width: @screen-md) {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
+  &__tabs-link {
+    color: @color-main;
+    font-family: @font-family--titles;
+    font-size: 26px;
+
+    &:hover,
+    &:active {
+      opacity: 0.7;
+    }
+
+    @media (max-width: @screen-sm-max) {
+      display: block;
+      padding: 10px;
+      border: 1px solid @color-main;
+      background-color: #fff;
+
+      &--active {
+        background-color: @color-main;
+        color: #fff;
+
+        &:hover,
+        &:active {
+          opacity: 1;
+        }
+      }
+    }
+
+    @media (min-width: @screen-md) {
+      position: relative;
+      color: @color-main;
+      margin-right: 20px;
+
+      &:before {
+        position: absolute;
+        content: '';
+        width: 97%;
+        height: 1px;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-bottom: 1px dotted @color-main;
+      }
+
+      &--active {
+        cursor: default;
+        position: relative;
+        color: @font-color;
+
+        &:before {
+          display: none;
+        }
+
+        &:hover,
+        &:active {
+          opacity: 1;
+        }
+      }
+    }
+
+    @media (min-width: @screen-lg) {
+      font-size: 36px;
+      margin-right: 30px;
+    }
+
+    @media (min-width: @screen-xl) {
+      margin-right: 43px;
+    }
+  }
+
+  &__tabs-content {
+    display: none;
+    padding-top: 20px;
+    line-height: 1.2;
+
+      &--active {
+        display: block;
+      }
   }
 
   &__title {
@@ -93,24 +195,16 @@
       top: 0;
       bottom: 0;
       width: 58.5%;
-      height: 400px;
+      height: 100%;
     }
 
     @media (min-width: @screen-lg) {
       width: 65%;
-      height: 550px;
     }
   }
 
   // Custom styles for ResponsiveTabs plugin
 
-  .r-tabs {
-    @media (max-width: @screen-sm-max) {
-      border: 1px solid @color-main;
-      background-color: @color-main;
-      border-radius: 4px;
-    }
-  }
 
   .r-tabs .r-tabs-tab {
     margin-right: 35px;

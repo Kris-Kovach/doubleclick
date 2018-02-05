@@ -161,6 +161,11 @@ gulp.task('js', function () {
   return gulp.src([
     dirs.source + '/js/vendor/jquery-3.3.1.min.js',
     dirs.source + '/js/vendor/jquery-migrate-3.0.0.min.js',
+    dirs.source + '/js/vendor/jquery.validate.min.js',
+    dirs.source + '/js/vendor/additional-methods.min.js',
+    dirs.source + '/js/vendor/inputmask.js',
+    dirs.source + '/js/vendor/jquery.inputmask.js',
+    dirs.source + '/js/vendor/inputmask.phone.extensions.js',
     dirs.source + '/js/vendor/*.js',
     dirs.source + '/js/assets/*.js'
   ])
@@ -180,6 +185,12 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest(dirs.build + '/fonts'));
 });
 
+gulp.task('favicon', function () {
+  return gulp.src([
+    dirs.source + '/img/favicon/*.{gif,png,jpg}',
+  ])
+    .pipe(gulp.dest(dirs.build));
+});
 
 // Кодирование в base64 шрифта в формате WOFF
 gulp.task('css:fonts:woff', function (callback) {
@@ -203,6 +214,7 @@ gulp.task('css:fonts:woff', function (callback) {
   }
 });
 
+// Кодирование в base64 шрифта в формате WOFF2
 // Кодирование в base64 шрифта в формате WOFF2
 gulp.task('css:fonts:woff2', function (callback) {
   let fontCssPath = dirs.source + '/fonts/font_opensans_woff2.css';
@@ -231,7 +243,7 @@ gulp.task('build', gulp.series(
   'clean',
   'svgstore',
   'png:sprite',
-  gulp.parallel('less', 'img', 'js', 'fonts'),
+  gulp.parallel('less', 'img', 'favicon', 'js', 'fonts'),
   'pug',
   'html'
 ));
@@ -316,3 +328,8 @@ var onError = function(err) {
   })(err);
   this.emit('end');
 };
+
+gulp.task('deploy', function() {
+  return gulp.src('./build/**/*')
+    .pipe(ghPages());
+});
