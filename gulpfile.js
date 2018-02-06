@@ -14,7 +14,6 @@ const replace = require('gulp-replace');
 const fileinclude = require('gulp-file-include');
 const del = require('del');
 const browserSync = require('browser-sync').create();
-const ghPages = require('gulp-gh-pages');
 const newer = require('gulp-newer');
 const imagemin = require('gulp-imagemin');
 const imageminJpegtran = require('imagemin-jpegtran');
@@ -24,7 +23,6 @@ const concat = require('gulp-concat');
 const cheerio = require('gulp-cheerio');
 const svgstore = require('gulp-svgstore');
 const svgmin = require('gulp-svgmin');
-const base64 = require('gulp-base64');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const cleanCSS = require('gulp-cleancss');
@@ -64,14 +62,7 @@ gulp.task('html', function() {
     .pipe(gulp.dest(dirs.build));
 });
 
-gulp.task('pug', function() {
-  return gulp.src(dirs.source + '/**/*.pug')
-    .pipe(plumber({ errorHandler: onError }))
-    .pipe(pug())
-    .pipe(gulp.dest(dirs.build));
-});
-
-// ЗАДАЧА: Копирование изображений
+// Копирование изображений
 gulp.task('img', function () {
   return gulp.src([
       dirs.source + '/img/*.{gif,png,jpg,jpeg,svg}',
@@ -83,7 +74,7 @@ gulp.task('img', function () {
     .pipe(gulp.dest(dirs.build + '/img'));
 });
 
-// Оптимизация изображений (ВРУЧНУЮ)
+// Оптимизация изображений (не входит в таск build)
 gulp.task('img:opt', function () {
   return gulp.src([
     dirs.source + '/img/*.{gif,png,jpg,jpeg,svg}',
@@ -99,7 +90,7 @@ gulp.task('img:opt', function () {
     .pipe(gulp.dest(dirs.source + '/img'));
 });
 
-// ЗАДАЧА: Сборка SVG-спрайта
+// Сборка SVG-спрайта
 gulp.task('svgstore', function (callback) {
   let spritePath = dirs.source + '/img/svg-sprite';
   if(fileExist(spritePath) !== false) {
@@ -127,7 +118,7 @@ gulp.task('svgstore', function (callback) {
   }
 });
 
-// Cшивка PNG-спрайта
+// Cборка PNG-спрайта
 gulp.task('png:sprite', function () {
   let fileName = 'sprite-' + Math.random().toString().replace(/[^0-9]/g, '') + '.png';
   let spriteData = gulp.src('src/img/png-sprite/*.png')
@@ -176,7 +167,6 @@ gulp.task('js', function () {
 });
 
 //Копирование шрифтов
-
 gulp.task('fonts', function () {
   return gulp.src([
     dirs.source + '/fonts/*.woff',
@@ -185,57 +175,12 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest(dirs.build + '/fonts'));
 });
 
+//Копирование фавиконки
 gulp.task('favicon', function () {
   return gulp.src([
     dirs.source + '/img/favicon/*.{gif,png,jpg}',
   ])
     .pipe(gulp.dest(dirs.build));
-});
-
-// Кодирование в base64 шрифта в формате WOFF
-gulp.task('css:fonts:woff', function (callback) {
-  let fontCssPath = dirs.source + '/fonts/font_opensans_woff.css';
-  if(fileExist(fontCssPath) !== false) {
-    return gulp.src(fontCssPath)
-      .pipe(plumber({ errorHandler: onError }))
-      .pipe(base64({
-        // baseDir: '/',
-        extensions: ['woff'],
-        maxImageSize: 1024*1024,
-        deleteAfterEncoding: false,
-        // debug: true
-      }))
-      .pipe(gulp.dest(dirs.build + '/css'));
-  }
-  else {
-    console.log('Файла WOFF, из которого генерируется CSS с base64-кодированным шрифтом, нет');
-    console.log('Отсутствующий файл: ' + fontCssPath);
-    callback();
-  }
-});
-
-// Кодирование в base64 шрифта в формате WOFF2
-// Кодирование в base64 шрифта в формате WOFF2
-gulp.task('css:fonts:woff2', function (callback) {
-  let fontCssPath = dirs.source + '/fonts/font_opensans_woff2.css';
-  if(fileExist(fontCssPath) !== false) {
-    return gulp.src(fontCssPath)
-      .pipe(plumber({ errorHandler: onError }))
-      .pipe(base64({
-        // baseDir: '/',
-        extensions: ['woff2'],
-        maxImageSize: 1024*1024,
-        deleteAfterEncoding: false,
-        // debug: true
-      }))
-      .pipe(replace('application/octet-stream;', 'application/font-woff2;'))
-      .pipe(gulp.dest(dirs.build + '/css'));
-  }
-  else {
-    console.log('Файла WOFF2, из которого генерируется CSS с base64-кодированным шрифтом, нет');
-    console.log('Отсутствующий файл: ' + fontCssPath);
-    callback();
-  }
 });
 
 // Сборка
@@ -244,11 +189,10 @@ gulp.task('build', gulp.series(
   'svgstore',
   'png:sprite',
   gulp.parallel('less', 'img', 'favicon', 'js', 'fonts'),
-  'pug',
   'html'
 ));
 
-// Локальный сервер, слежение
+// Локальный сервер
 gulp.task('serve', gulp.series('build', function() {
 
   browserSync.init({
@@ -270,18 +214,13 @@ gulp.task('serve', gulp.series('build', function() {
   );
 
   gulp.watch(
-    dirs.source + '/pug/**/*.pug',
-    gulp.series('pug', reloader)
-  );
-
-  gulp.watch(
     dirs.source + '/less/**/*.less',
     gulp.series('less')
   );
 
   gulp.watch(
     dirs.source + '/img/svg-sprite/*.svg',
-    gulp.series('svgstore', 'html', 'pug', reloader)
+    gulp.series('svgstore', 'html', reloader)
   );
 
   gulp.watch(
@@ -301,18 +240,15 @@ gulp.task('serve', gulp.series('build', function() {
 
 }));
 
-// Задача по умолчанию
 gulp.task('default',
   gulp.series('serve')
 );
 
-// Дополнительная функция для перезагрузки в браузере
 function reloader(done) {
   browserSync.reload();
   done();
 }
 
-// Проверка существования файла/папки
 function fileExist(path) {
   const fs = require('fs');
   try {
@@ -329,7 +265,3 @@ var onError = function(err) {
   this.emit('end');
 };
 
-gulp.task('deploy', function() {
-  return gulp.src('./build/**/*')
-    .pipe(ghPages());
-});

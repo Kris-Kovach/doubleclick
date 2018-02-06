@@ -1,41 +1,102 @@
-'use strict';
+$(document).ready(function (){
+  // Burger menu
+  $('.js-main-nav-toggler').on('click', function (event) {
+    event.preventDefault();
+    $(this).toggleClass('main-nav-toggler--close');
+    $('.js-main-nav').toggleClass('main-nav--visible');
+  });
 
-
-// Burger menu
-$('.js-main-nav-toggler').on('click', function (event) {
-  event.preventDefault();
-  $(this).toggleClass('main-nav-toggler--close');
-  $('.js-main-nav').toggleClass('main-nav--visible');
-});
-
-$('.js-main-nav-link').on('click', function (event) {
-  event.preventDefault();
-  $('.js-main-nav-toggler').removeClass('main-nav-toggler--close');
-  $('.js-main-nav').removeClass('main-nav--visible');
-});
+  $('.js-main-nav-link').on('click', function (event) {
+    event.preventDefault();
+    $('.js-main-nav-toggler').removeClass('main-nav-toggler--close');
+    $('.js-main-nav').removeClass('main-nav--visible');
+  });
 
 // Responsive tabs
 
-$('.js-products-tabs').responsiveTabs({
-  active: 0
-});
+  $('.js-products-tabs').responsiveTabs({
+    active: 0
+  });
 
 // Tabs
 
-$('.js-contacts-tab').click(function (e) {
-  e.preventDefault();
-  var tab_id = $(this).attr('href');
+  $('.js-contacts-tab').click(function (e) {
+    e.preventDefault();
+    var tab_id = $(this).attr('href');
 
-  $('.js-contacts-tab').removeClass('contacts__tabs-link--active');
-  $('.contacts__tabs-content').removeClass('contacts__tabs-content--active');
+    $('.js-contacts-tab').removeClass('contacts__tabs-link--active');
+    $('.contacts__tabs-content').removeClass('contacts__tabs-content--active');
 
-  $(this).addClass('contacts__tabs-link--active');
-  $(tab_id).addClass('contacts__tabs-content--active');
+    $(this).addClass('contacts__tabs-link--active');
+    $(tab_id).addClass('contacts__tabs-content--active');
+  });
+
+  if ($('.contacts__tabs-list').length) {
+    $('.contacts__tabs-item:first-child .contacts__tabs-link').click();
+  }
+
+  // Inputmask
+
+  $('.js-field-phone').inputmask({"mask": "+7 (999) 999-9999"});
+
+// Validation
+
+  jQuery.validator.addMethod("phoneRU", function (phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, "");
+    phone_number = phone_number.replace('(', "");
+    phone_number = phone_number.replace(')', "");
+    phone_number = phone_number.replace(/-/g, "");
+    return this.optional(element) || phone_number.length > 9 &&
+      phone_number.match(/(\+7|8)9([0-9]{2})[1-9]([0-9]{6})/);
+  }, "Введите номер телефона");
+
+  $('.js-callback-form').validate({
+    rules: {
+      fullname: "required",
+      email: {
+        email: true,
+        require_from_group: [1, ".validation-group"]
+      },
+      phone: {
+        phoneRU: true,
+        require_from_group: [1, ".validation-group"]
+      }
+    },
+    errorPlacement: function (error, element) {
+      element.attr("placeholder", error.text());
+    },
+    messages: {
+      fullname: "Представьтесь, пожалуйста",
+      phone: "Введите номер телефона",
+      email: "Введите e-mail"
+    }
+  });
+
+// Smooth scroll
+
+  $('.main-nav__link').on('click',function(e){
+    e.preventDefault();
+    console.log(true);
+    $('html, body').animate({scrollTop:$(this.hash).offset().top}, 500);
+  });
+
+// Icons animation
+
+  if ($('.advantages__img').length) {
+    $(window).scroll( function(){
+      $('.advantages__img').each( function(i){
+        var bottom_of_object = $(this).position().top + $(this).outerHeight();
+        var bottom_of_window = $(window).scrollTop() + $(window).height();
+        if( bottom_of_window > bottom_of_object ){
+          $(this).animate({'opacity':'1'},2000);
+        }
+      });
+    });
+  }
+
 });
 
-if ($('.contacts__tabs-list').length) {
-  $('.contacts__tabs-item:first-child .contacts__tabs-link').click();
-}
+
 
 // Map
 
@@ -47,7 +108,6 @@ if ($('.js-contacts-map').length) {
       center: {lat: 59.950173, lng: 30.294733},
       zoom: 13,
       scrollwheel: false,
-      disableDefaultUI: true,
       styles: [{featureType:"administrative",elementType:"all",stylers:[{visibility:"on"},{saturation:-100},{lightness:20}]},{featureType:"road",elementType:"all",stylers:[{visibility:"on"},{saturation:-100},{lightness:40}]},{featureType:"water",elementType:"all",stylers:[{visibility:"on"},{saturation:-10},{lightness:30}]},{featureType:"landscape.man_made",elementType:"all",stylers:[{visibility:"simplified"},{saturation:-60},{lightness:10}]},{featureType:"landscape.natural",elementType:"all",stylers:[{visibility:"simplified"},{saturation:-60},{lightness:60}]},{featureType:"poi",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]},{featureType:"transit",elementType:"all",stylers:[{visibility:"off"},{saturation:-100},{lightness:60}]}]
     });
 
@@ -94,64 +154,3 @@ if ($('.js-contacts-map').length) {
     });
   });
 }
-
-// Inputmask
-
-$('.js-field-phone').inputmask({"mask": "+7 (999) 999-9999"});
-
-// Validation
-
-jQuery.validator.addMethod("phoneRU", function (phone_number, element) {
-  phone_number = phone_number.replace(/\s+/g, "");
-  phone_number = phone_number.replace('(', "");
-  phone_number = phone_number.replace(')', "");
-  phone_number = phone_number.replace(/-/g, "");
-  return this.optional(element) || phone_number.length > 9 &&
-    phone_number.match(/(\+7|8)9([0-9]{2})[1-9]([0-9]{6})/);
-}, "Введите номер телефона");
-
-$('.js-callback-form').validate({
-  rules: {
-    fullname: "required",
-    email: {
-      email: true,
-      require_from_group: [1, ".validation-group"]
-    },
-    phone: {
-      phoneRU: true,
-      require_from_group: [1, ".validation-group"]
-    }
-  },
-  errorPlacement: function (error, element) {
-    element.attr("placeholder", error.text());
-  },
-  messages: {
-    fullname: "Представьтесь, пожалуйста",
-    phone: "Введите номер телефона",
-    email: "Введите e-mail"
-  }
-});
-
-// Smooth scroll
-
-$('.main-nav__link').on('click',function(e){
-  e.preventDefault();
-  console.log(true);
-  $('html, body').animate({scrollTop:$(this.hash).offset().top}, 500);
-});
-
-// Icons animation
-
-if ($('.advantages__img').length) {
-  $(window).on('scroll', function () {
-    if ($(window).scrollTop() >= ($(".advantages__items").offset().top - ($(window).height()))) {
-      if (!$(".advantages__items").hasClass("animated")) {
-        $('.advantages__img').each(function () {
-          $(this).css('visibility', 'visible').hide().fadeIn(2500);
-        });
-      }
-      $(".advantages__items").addClass("animated");
-    }
-  });
-}
-

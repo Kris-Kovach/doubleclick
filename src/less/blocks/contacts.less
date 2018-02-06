@@ -70,6 +70,19 @@
     @media (min-width: @screen-md) {
       display: inline-block;
       vertical-align: top;
+      margin-right: 20px;
+    }
+
+    @media (min-width: @screen-lg) {
+      margin-right: 30px;
+    }
+
+    @media (min-width: @screen-xl) {
+      margin-right: 43px;
+    }
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 
@@ -103,7 +116,6 @@
     @media (min-width: @screen-md) {
       position: relative;
       color: @color-main;
-      margin-right: 20px;
 
       &:before {
         position: absolute;
@@ -113,7 +125,7 @@
         bottom: 5px;
         left: 50%;
         transform: translateX(-50%);
-        border-bottom: 1px dotted @color-main;
+        border-bottom: 1px dashed @color-main;
       }
 
       &--active {
@@ -134,11 +146,6 @@
 
     @media (min-width: @screen-lg) {
       font-size: 36px;
-      margin-right: 30px;
-    }
-
-    @media (min-width: @screen-xl) {
-      margin-right: 43px;
     }
   }
 
