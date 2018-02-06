@@ -35,7 +35,7 @@ $(document).ready(function (){
     $('.contacts__tabs-item:first-child .contacts__tabs-link').click();
   }
 
-  // Inputmask
+// Inputmask
 
   $('.js-field-phone').inputmask({"mask": "+7 (999) 999-9999"});
 
@@ -69,7 +69,17 @@ $(document).ready(function (){
       fullname: "Обязательное поле",
       phone: "Некорректный формат телефона",
       email: "Некорректный формат e-mail"
+    },
+    submitHandler: function (form, evt) {
+      evt.preventDefault();
+      $('.callback__inner').hide();
+      $('.success-message').show();
     }
+  });
+
+  $('.success-message__close').on('click', function (){
+    $('.callback__inner').show();
+    $('.success-message').hide();
   });
 
 // Smooth scroll

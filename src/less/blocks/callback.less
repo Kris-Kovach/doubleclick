@@ -1,13 +1,20 @@
 .callback {
+  position: relative;
   padding-top: 20px;
   padding-bottom: 35px;
   background: #6a685a url('../img/callback-bg.jpg') top center no-repeat;
   background-size: cover;
   color: #fff;
+  min-height: 425px;
 
   @media (min-width: @screen-lg) {
+    min-height: 678px;
     padding-top: 195px;
     padding-bottom: 185px;
+  }
+
+  @media (min-width: @screen-xl) {
+    min-height: 702px;
   }
 
   &__inner {

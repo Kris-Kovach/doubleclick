@@ -3,7 +3,7 @@
     'use strict';
 
     var file     = 'img/sprite-svg.svg', // путь к файлу спрайта
-        revision = 1; // версия спрайта (необходимо изменить значение переменной в случае необходимости обновить спрайт)
+        revision = 50; // версия спрайта (необходимо изменить значение переменной в случае необходимости обновить спрайт)
 
     if( !document.createElementNS || !document.createElementNS( 'http://www.w3.org/2000/svg', 'svg' ).createSVGRect )
         return true;
