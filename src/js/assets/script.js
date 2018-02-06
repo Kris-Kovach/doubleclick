@@ -66,9 +66,9 @@ $(document).ready(function (){
       element.attr("placeholder", error.text());
     },
     messages: {
-      fullname: "Представьтесь, пожалуйста",
-      phone: "Введите номер телефона",
-      email: "Введите e-mail"
+      fullname: "Обязательное поле",
+      phone: "Некорректный формат телефона",
+      email: "Некорректный формат e-mail"
     }
   });
 
@@ -81,19 +81,18 @@ $(document).ready(function (){
   });
 
 // Icons animation
-
   if ($('.advantages__img').length) {
-    $(window).scroll( function(){
-      $('.advantages__img').each( function(i){
-        var bottom_of_object = $(this).position().top + $(this).outerHeight();
-        var bottom_of_window = $(window).scrollTop() + $(window).height();
-        if( bottom_of_window > bottom_of_object ){
-          $(this).animate({'opacity':'1'},2000);
+    $(window).on('scroll', function () {
+      if ($(window).scrollTop() >= ($(".advantages__items").offset().top - ($(window).height()))) {
+        if (!$(".advantages__items").hasClass("animated")) {
+          $('.advantages__img').each(function () {
+            $(this).css('visibility', 'visible').hide().fadeIn(3000);
+          });
         }
-      });
+        $(".advantages__items").addClass("animated");
+      }
     });
   }
-
 });
 
 

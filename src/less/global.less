@@ -55,3 +55,21 @@ input[type="submit"] {
 .gm-style-mtc {
   display: none;
 }
+
+.error {
+  color: #545953;
+}
+
+form select.error,
+form textarea.error,
+form input.error {
+  border: 2px solid #fff;
+
+  &:focus {
+    border: 2px solid #fff;
+  }
+
+  &::placeholder {
+    color: #FFE4E1;
+  }
+}
