@@ -242,8 +242,12 @@
   }
 
   &__list {
+    display: inline-block;
+    vertical-align: top;
     width: auto;
-    margin-left: auto;
-    margin-right: auto;
+
+    @media (min-width: @screen-md) {
+      display: block;
+    }
   }
 }

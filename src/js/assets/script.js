@@ -41,29 +41,25 @@ $(document).ready(function (){
 
 // Validation
 
-  jQuery.validator.addMethod("phoneRU", function (phone_number, element) {
-    phone_number = phone_number.replace(/\s+/g, "");
-    phone_number = phone_number.replace('(', "");
-    phone_number = phone_number.replace(')', "");
-    phone_number = phone_number.replace(/-/g, "");
-    return this.optional(element) || phone_number.length > 9 &&
-      phone_number.match(/(\+7|8)9([0-9]{2})[1-9]([0-9]{6})/);
-  }, "Введите номер телефона");
+  $.validator.addMethod("minlenghtphone", function (value, element) {
+    return value.replace(/\D+/g, '').length > 10;
+  });
+
+  $.validator.addMethod("requiredphone", function (value, element) {
+    return value.replace(/\D+/g, '').length > 1;
+  });
 
   $('.js-callback-form').validate({
     rules: {
       fullname: "required",
-      email: {
-        email: true,
-        require_from_group: [1, ".validation-group"]
-      },
+      email: "required",
       phone: {
-        phoneRU: true,
-        require_from_group: [1, ".validation-group"]
+        requiredphone: true,
+        minlenghtphone: true
       }
     },
     errorPlacement: function (error, element) {
-      element.attr("placeholder", error.text());
+      element.attr("placeholder", error[0].outerText);
     },
     messages: {
       fullname: "Обязательное поле",
