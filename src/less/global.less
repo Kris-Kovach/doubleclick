@@ -12,6 +12,9 @@ html {
 
 body {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
   font-family: @font-family;
   font-size: @font-size--small;
@@ -29,6 +32,10 @@ body {
   @media (min-width: @screen-xl) {
     font-size: @font-size;
   }
+}
+
+main {
+  flex-grow: 1;
 }
 
 a {
